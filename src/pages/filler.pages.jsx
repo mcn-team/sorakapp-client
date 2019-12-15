@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Filler = () => {
+export const FillerPage = () => {
     return (
         <h2>Filler Page</h2>
     );

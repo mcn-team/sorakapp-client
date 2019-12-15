@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Stalinist One';
+  src: local('Stalinist One'), url(./assets/fonts/StalinistOne-Regular.ttf) format('truetype');
+}
+
+body {
+  letter-spacing: 1px;
+  background-color: #121212;
+  font-family: 'Stalinist One', cursive;
+  color: rgba(255, 255, 255, 0.87);
+}
+
 .App {
   text-align: center;
 }
