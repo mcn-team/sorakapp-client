@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Title } from './title.component';
 
-import { TEXT_STYLE_MEDIUM } from '../constants/styles.js';
+import { TEXT_STYLE_MEDIUM_DEFAULT } from '../constants/styles.js';
 
 export const Subtitle = styled((props) => {
     const { className, noMargin, children } = props;
@@ -18,7 +18,7 @@ export const Subtitle = styled((props) => {
         </H3>
     );
 })({
-    ...TEXT_STYLE_MEDIUM,
+    ...TEXT_STYLE_MEDIUM_DEFAULT,
     display: 'inline-flex'
 });
 
