@@ -19,7 +19,7 @@ const renderPrivatePage = (component) => {
     };
 };
 
-export const Router = (props) => {
+export const Router = () => {
     return (
         <Switch>
             <Route exact path="/" render={renderPrivatePage(<HomePage />)} />

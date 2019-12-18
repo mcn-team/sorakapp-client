@@ -11,6 +11,7 @@
       "exports": "never",
       "functions": "never"
     }],
+    "max-len": ["error", { "code": 120, "ignoreComments": true }],
     "array-bracket-spacing": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "multiline-ternary": ["warn", "always-multiline"],

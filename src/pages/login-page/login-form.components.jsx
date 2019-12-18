@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Form, Field } from 'react-final-form';
 
-import { TEXT_STYLE_HIGH_DEFAULT, TEXT_STYLE_HIGH_PRIMARY, ELEVATED_04, ELEVATED_01 } from '../../constants/styles.js';
+import { TEXT_STYLE_HIGH_DEFAULT, TEXT_STYLE_HIGH_PRIMARY, ELEVATED_04 } from '../../constants/styles.js';
 
 const onSubmit = (values) => {
 
