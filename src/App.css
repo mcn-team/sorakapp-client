@@ -36,7 +36,7 @@ body {
 }
 
 .App-link {
-  color: #61dafb;
+  color: rgb(93, 193, 238);
 }
 
 @keyframes App-logo-spin {
@@ -46,4 +46,30 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  letter-spacing: 1px;
+  border: none;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.87);
+  -webkit-box-shadow: 0 0 0 1000px #121212 inset;
+  font-family: 'Stalinist One', cursive;
+}
+
+input:focus {
+  outline-width: 0;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.87);
+  letter-spacing: 1px;
+  font-family: 'Stalinist One', cursive;
 }
