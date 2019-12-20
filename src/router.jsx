@@ -6,7 +6,7 @@ import { HomePage, LoginPage, FillerPage } from './pages';
 const renderPrivatePage = (component) => {
     const isLogged = localStorage.getItem('logged');
 
-    if (isLogged === 'false') {
+    if (!isLogged || isLogged === 'false') {
         return (props) => {
             return (
                 <Redirect to={{ pathname: '/login', state: { from: props.location } } } />
