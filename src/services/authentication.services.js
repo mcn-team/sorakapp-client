@@ -1,33 +1,21 @@
-const HTTP_BAD_REQUEST = 400;
+import { genericFetch } from '../services/genericFetch.services';
+import { LocalStorage } from '../utils/storages.utils';
 
-async function fetchAuthenticate(data) {
-    return new Promise(async (resolve, reject) => {
-        const url = 'http://localhost:4000/api/login';
-        const init = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-        const response = await fetch(url, init);
+export const authenticate = async (data) => {
+    const url = 'http://localhost:4000/api/login';
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
 
-        if (response.status >= HTTP_BAD_REQUEST) {
-            return reject({
-                result: await response.json(),
-                status: response.status
-            });
-        }
+    const response = await genericFetch(url, options);
 
-        return resolve({
-            result: await response.json(),
-            status: response.status
-        });
-    });
-}
+    const token = response.result.result;
 
-export async function authenticate(data) {
-    const result = await fetchAuthenticate(data);
-
-    console.log(result);
-}
+    if (token) {
+        LocalStorage.setItem('auth_token', token);
+    }
+};

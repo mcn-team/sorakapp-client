@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Form, Field } from 'react-final-form';
+
 import { authenticate } from '../../services/authentication.services';
 
 import { TEXT_STYLE_HIGH_DEFAULT, TEXT_STYLE_HIGH_PRIMARY, ELEVATED_04 } from '../../constants/styles.js';
 
 const onSubmit = async (values) => {
-    try {
-        await authenticate(values);
-        console.log(values);
-    } catch (err) {
-        console.error(err);
-    }
+    await authenticate(values);
 };
 
 const StyledField = styled(Field)`
