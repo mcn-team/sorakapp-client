@@ -28,5 +28,6 @@ async function fetchAuthenticate(data) {
 
 export async function authenticate(data) {
     const result = await fetchAuthenticate(data);
+
     console.log(result);
 }
