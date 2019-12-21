@@ -2,11 +2,12 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { HomePage, LoginPage, FillerPage } from './pages';
+import { LocalStorage } from './utils/storages.utils';
 
 const renderPrivatePage = (component) => {
-    const isLogged = localStorage.getItem('logged');
+    const isLogged = LocalStorage.getItem('auth_token');
 
-    if (!isLogged || isLogged === 'false') {
+    if (!isLogged) {
         return (props) => {
             return (
                 <Redirect to={{ pathname: '/login', state: { from: props.location } } } />
