@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Form, Field } from 'react-final-form';
 
-import { authenticate } from '../../services/authentication.services';
+import { authenticate } from '../../../services/authentication.services';
 
-import { TEXT_STYLE_HIGH_DEFAULT, TEXT_STYLE_HIGH_PRIMARY, ELEVATED_04 } from '../../constants/styles.js';
-
-const onSubmit = async (values) => {
-    await authenticate(values);
-};
+import { TEXT_STYLE_HIGH_DEFAULT, TEXT_STYLE_HIGH_PRIMARY, ELEVATED_04 } from '../../../constants/styles.js';
 
 const StyledField = styled(Field)`
   flex: 1;
@@ -70,7 +66,15 @@ const StyledButton = styled.button`
   }
 `;
 
-export const LoginForm = (props) => {
+export const LoginForm = () => {
+    const onSubmit = async (values) => {
+        const response = await authenticate(values);
+
+        if (response.error) {
+            console.error(response);
+        }
+    };
+
     return (
         <Form
             keepDirtyOnReinitialize

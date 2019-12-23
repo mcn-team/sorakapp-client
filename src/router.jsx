@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { HomePage, LoginPage, FillerPage } from './pages';
-import { LocalStorage } from './utils/storages.utils';
+import { LocalStorage } from './utils';
 
 const renderPrivatePage = (component) => {
     const isLogged = LocalStorage.getItem('auth_token');
