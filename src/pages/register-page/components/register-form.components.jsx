@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
+
 import { register } from '../../../services/authentication.services';
 import { Authentication } from '../../../utils';
 
