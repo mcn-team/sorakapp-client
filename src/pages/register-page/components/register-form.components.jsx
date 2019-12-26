@@ -13,7 +13,7 @@ const validate = () => {
 };
 
 export const RegisterForm = () => {
-    if (!Authentication.isAuthenticated()) {
+    if (Authentication.isAuthenticated()) {
         return (
             <Redirect to="/" />
         );
