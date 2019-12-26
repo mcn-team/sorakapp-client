@@ -2,29 +2,31 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { HomePage, LoginPage, RegisterPage, FillerPage } from './pages';
-import { LocalStorage } from './utils';
+import { Authentication } from './utils';
 
-const renderPrivatePage = (component) => {
-    const isLogged = LocalStorage.getItem('auth_token');
-
-    if (!isLogged) {
-        return (props) => {
-            return (
-                <Redirect to={{ pathname: '/login', state: { from: props.location } } } />
-            );
-        };
+const PrivateRoute = ({ children, render, location, ...otherProps }) => {
+    if (!Authentication.isAuthenticated()) {
+        return (
+            <Redirect to={{ pathname: '/login', state: { from: location } } } />
+        );
     }
 
-    return () => {
-        return component;
-    };
+    return (
+        <Route {...otherProps}>
+            {render || children}
+        </Route>
+    );
 };
 
 export const Router = () => {
     return (
         <Switch>
-            <Route exact path="/" render={renderPrivatePage(<HomePage />)} />
-            <Route path="/filler" render={renderPrivatePage(<FillerPage />)} />
+            <PrivateRoute exact path="/">
+                <HomePage />
+            </PrivateRoute>
+            <PrivateRoute path="/filler">
+                <FillerPage />
+            </PrivateRoute>
             <Route path="/login">
                 <LoginPage />
             </Route>

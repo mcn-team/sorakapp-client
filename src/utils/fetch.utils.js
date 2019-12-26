@@ -1,4 +1,5 @@
-import { HTTP_BAD_REQUEST } from '../constants/http.constants';
+import { HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from '../constants/http.constants';
+import { Authentication } from '../utils';
 import { CONFIG } from '../config';
 
 const { API_PREFIX, API_PORT, API_BASE_URL } = CONFIG;
@@ -7,6 +8,10 @@ export const simpleFetch = (endpoint, options = {}) => {
     return new Promise(async (resolve, reject) => {
         const url = `${API_BASE_URL}:${API_PORT}${API_PREFIX}${endpoint}`;
         const response = await fetch(url, options);
+
+        if (response.status === HTTP_UNAUTHORIZED) {
+            Authentication.removeAuthentication();
+        }
 
         if (response.status >= HTTP_BAD_REQUEST) {
             const errorResponse = await response.json();
