@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { HomePage, LoginPage, FillerPage } from './pages';
+import { HomePage, LoginPage, RegisterPage, FillerPage } from './pages';
 import { LocalStorage } from './utils';
 
 const renderPrivatePage = (component) => {
@@ -27,6 +27,9 @@ export const Router = () => {
             <Route path="/filler" render={renderPrivatePage(<FillerPage />)} />
             <Route path="/login">
                 <LoginPage />
+            </Route>
+            <Route path="/register">
+                <RegisterPage />
             </Route>
         </Switch>
     );
