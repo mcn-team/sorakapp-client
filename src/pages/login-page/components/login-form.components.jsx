@@ -19,14 +19,14 @@ const StyledField = styled(Field)`
   border-radius: 3px;
 `;
 
-const Input = styled(({ label, placeholder, name, className }) => {
+const Input = styled(({ label, placeholder, name, className, type }) => {
     return (
         <div className={className}>
             {label && <label>{label}</label>}
             <StyledField
                 name={name}
                 component="input"
-                type="text"
+                type={type}
                 placeholder={placeholder}
             />
         </div>
@@ -38,7 +38,14 @@ const Input = styled(({ label, placeholder, name, className }) => {
 Input.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    type: PropTypes.string
+};
+
+Input.defaultProps = {
+    label: '',
+    placeholder: '',
+    type: 'text'
 };
 
 const StyledButton = styled.button`
@@ -82,13 +89,17 @@ export const LoginForm = () => {
             render={({ handleSubmit, submitting }) => {
                 return (
                     <form onSubmit={handleSubmit}>
+
                         <Input name="username" placeholder="Username" />
                         <Input name="password" placeholder="Password" />
+
                         <StyledButton
                             disabled={submitting}
-                            type="submit">
+                            type="submit"
+                        >
                             <span>Submit</span>
                         </StyledButton>
+
                     </form>
                 );
             }}

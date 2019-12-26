@@ -17,7 +17,28 @@ export const authenticate = async (data) => {
         if (token) {
             LocalStorage.setItem('auth_token', token);
         }
+
+        return response;
     } catch (err) {
         return Errors.manageErrno(err);
+    }
+};
+
+export const register = async (data) => {
+    const url = '/register';
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await simpleFetch(url, options);
+
+    const token = response.result;
+
+    if (token) {
+        LocalStorage.setItem('auth_token', token);
     }
 };
