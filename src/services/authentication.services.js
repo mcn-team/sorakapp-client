@@ -1,8 +1,7 @@
-import { genericFetch } from '../services/genericFetch.services';
-import { LocalStorage } from '../utils/storages.utils';
+import { simpleFetch, LocalStorage, Errors } from '../utils';
 
 export const authenticate = async (data) => {
-    const url = 'http://localhost:4000/api/login';
+    const endpoint = '/login';
     const options = {
         method: 'POST',
         headers: {
@@ -11,11 +10,14 @@ export const authenticate = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = await genericFetch(url, options);
+    try {
+        const response = await simpleFetch(endpoint, options);
+        const token = response.result;
 
-    const token = response.result.result;
-
-    if (token) {
-        LocalStorage.setItem('auth_token', token);
+        if (token) {
+            LocalStorage.setItem('auth_token', token);
+        }
+    } catch (err) {
+        return Errors.manageErrno(err);
     }
 };
