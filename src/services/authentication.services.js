@@ -1,4 +1,4 @@
-import { simpleFetch, LocalStorage, Errors } from '../utils';
+import { simpleFetch, Authentication, Errors } from '../utils';
 
 export const authenticate = async (data) => {
     const endpoint = '/login';
@@ -15,7 +15,7 @@ export const authenticate = async (data) => {
         const token = response.result;
 
         if (token) {
-            LocalStorage.setItem('auth_token', token);
+            Authentication.setAuthentication(token);
         }
 
         return response;
@@ -39,6 +39,6 @@ export const register = async (data) => {
     const token = response.result;
 
     if (token) {
-        LocalStorage.setItem('auth_token', token);
+        Authentication.setAuthentication(token);
     }
 };
