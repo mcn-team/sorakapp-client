@@ -17,13 +17,15 @@ export const authenticate = async (data) => {
         if (token) {
             LocalStorage.setItem('auth_token', token);
         }
+
+        return response;
     } catch (err) {
         return Errors.manageErrno(err);
     }
 };
 
 export const register = async (data) => {
-    const url = 'http://localhost:4000/api/register';
+    const url = '/register';
     const options = {
         method: 'POST',
         headers: {
@@ -32,9 +34,9 @@ export const register = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = await genericFetch(url, options);
+    const response = await simpleFetch(url, options);
 
-    const token = response.result.result;
+    const token = response.result;
 
     if (token) {
         LocalStorage.setItem('auth_token', token);

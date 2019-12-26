@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
-import { register } from '../../services/authentication.services';
-import { LocalStorage } from '../../utils/storages.utils';
+import { register } from '../../../services/authentication.services';
+import { LocalStorage } from '../../../utils/storages.utils';
 
 const onSubmit = async (values) => {
     await register(values);
@@ -12,7 +12,8 @@ const validate = () => {
 
 };
 
-const onLoginRedirect = () => {
+export const RegisterForm = () => {
+
     const token = LocalStorage.getItem('auth_token');
 
     if (token != null) {
@@ -20,11 +21,6 @@ const onLoginRedirect = () => {
             <Redirect to="/" />
         );
     }
-};
-
-export const RegisterForm = () => {
-
-    onLoginRedirect();
 
     return (
         <Form

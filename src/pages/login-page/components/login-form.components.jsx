@@ -26,7 +26,7 @@ const Input = styled(({ label, placeholder, name, className, type }) => {
             <StyledField
                 name={name}
                 component="input"
-                type="text"
+                type={type}
                 placeholder={placeholder}
             />
         </div>
@@ -40,6 +40,12 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     type: PropTypes.string
+};
+
+Input.defaultProps = {
+    label: '',
+    placeholder: '',
+    type: 'text'
 };
 
 const StyledButton = styled.button`
