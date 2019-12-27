@@ -4,23 +4,19 @@ import styled from 'styled-components';
 
 import { Title } from './title.component';
 
-import { TEXT_STYLE_MEDIUM_DEFAULT } from '../constants/styles.js';
+import { FG_TEXT_MEDIUM } from '../constants/styles.js';
 
-export const Subtitle = styled((props) => {
-    const { className, noMargin, children } = props;
-    const H3 = styled.h3({
-        ...(noMargin && { marginTop: 0 })
-    });
-
+export const Subtitle = styled(({ className, children }) => {
     return (
-        <H3 className={className}>
+        <h3 className={className}>
             {children}
-        </H3>
+        </h3>
     );
-})({
-    ...TEXT_STYLE_MEDIUM_DEFAULT,
-    display: 'inline-flex'
-});
+})`
+  color: ${FG_TEXT_MEDIUM};
+  display: inline-flex;
+  margin-top: ${props => props.noMargin && '0'}
+`;
 
 Title.propTypes = {
     className: PropTypes.string,

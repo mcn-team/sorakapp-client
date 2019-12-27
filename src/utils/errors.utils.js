@@ -14,7 +14,7 @@ export class Errors {
             case '0001':
                 return { error: 'Username/password are incorrect' };
             case '0002':
-                return { error: 'Username/password are incorrect' };
+                return { error: 'Username already exists' };
             default:
                 throw Errors.fetchError(error);
         }
