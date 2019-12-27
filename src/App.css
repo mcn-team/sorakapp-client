@@ -42,7 +42,9 @@ select:-webkit-autofill:active {
   font-family: 'Stalinist One', cursive;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline-width: 0;
 }
 

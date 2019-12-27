@@ -1,6 +1,10 @@
 {
   "extends": "react-app",
   "rules": {
+    "no-unused-vars": [
+      "error",
+      { "args": "after-used", "ignoreRestSiblings":true }
+    ],
     "padded-blocks": ["error", "never"],
     "prefer-const": "error",
     "padding-line-between-statements": [

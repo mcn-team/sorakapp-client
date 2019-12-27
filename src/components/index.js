@@ -4,3 +4,6 @@ export { Title } from './title.component';
 export { Header } from './header.components';
 export { Input } from './input.component';
 export { Button } from './button.component';
+export { Error } from './input-error.component';
+export { CenteringContainer } from './centering-container.component';
+export { Select } from './select.component';

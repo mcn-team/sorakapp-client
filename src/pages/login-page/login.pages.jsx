@@ -1,17 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import { CenteringContainer } from '../../components';
 import { LoginForm } from './components/login-form.components';
-
-const PageTitle = styled.h2`
-  text-align: center;
-`;
 
 export const LoginPage = () => {
     return (
-        <>
-            <PageTitle>Login Page</PageTitle>
+        <CenteringContainer>
+            <h2>Login Page</h2>
             <LoginForm />
-        </>
+        </CenteringContainer>
     );
 };

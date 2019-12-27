@@ -1,20 +1,41 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { Form, Field } from 'react-final-form';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link, Redirect } from 'react-router-dom';
+import { Form } from 'react-final-form';
 
+import { Button, Error, Input, Select } from '../../../components';
 import { register } from '../../../services/authentication.services';
-import { Authentication } from '../../../utils';
+import { Authentication, Validation } from '../../../utils';
 
-const onSubmit = async (values) => {
-    await register(values);
-};
+const PASSWORD_MIN_LENGTH = 8;
+const StyledButton = styled(Button)`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+const StyledForm = styled.form`
+  width: min-content
+`;
+
 
 const validate = () => {
 
 };
 
 export const RegisterForm = () => {
-    if (Authentication.isAuthenticated()) {
+    const [ redirect, setRedirect ] = useState(false);
+    const [ error, setError ] = useState(null);
+    const onSubmit = async (values) => {
+        const response = await register(values);
+
+        if (response.error) {
+            setError(response.error);
+            console.error(response.error);
+        } else {
+            setRedirect(Authentication.isAuthenticated());
+        }
+    };
+
+    if (redirect) {
         return (
             <Redirect to="/" />
         );
@@ -24,28 +45,49 @@ export const RegisterForm = () => {
         <Form
             onSubmit={ onSubmit }
             validate={ validate }
-            render={({ handleSubmit }) => (
-                <form onSubmit={ handleSubmit }>
-                    <div>
-                        <label>Username</label>
-                        <Field name="username" component="input" type="text" placeholder="username" />
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <Field name="password" component="input" type="password" placeholder="password" />
-                    </div>
-                    <div>
-                        <label>Role</label>
-                        <Field name="role" component="select">
-                            <option />
+            render={({ handleSubmit, submitting }) => {
+                return (
+                    <StyledForm onSubmit={ handleSubmit }>
+                        <Input
+                            name="username"
+                            placeholder="Username"
+                            validate={Validation.isRequired}
+                        />
+                        <Input
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            validate={[ Validation.isRequired, Validation.isMinimumLength(PASSWORD_MIN_LENGTH) ]}
+                        />
+                        <Select
+                            name="role"
+                            placeholder="Choose a role"
+                            validate={Validation.isRequired}
+                        >
                             <option value="CLIENT">Client</option>
                             <option value="WORKER">Worker</option>
                             <option value="TRADER">Trader</option>
-                        </Field>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            )}
+                        </Select>
+                        <div>
+                            <StyledButton
+                                disabled={submitting}
+                                type="submit"
+                            >
+                                <span>Register</span>
+                            </StyledButton>
+                            <Link to="/register">
+                                <StyledButton
+                                    type="button"
+                                    disabled={submitting}
+                                >
+                                    <span>Login Page</span>
+                                </StyledButton>
+                            </Link>
+                        </div>
+                        <Error centered>{error || ''}</Error>
+                    </StyledForm>
+                );
+            }}
         />
     );
 };

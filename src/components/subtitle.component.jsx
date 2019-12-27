@@ -6,20 +6,16 @@ import { Title } from './title.component';
 
 import { FG_TEXT_MEDIUM } from '../constants/styles.js';
 
-export const Subtitle = styled((props) => {
-    const { className, noMargin, children } = props;
-    const H3 = styled.h3({
-        ...(noMargin && { marginTop: 0 })
-    });
-
+export const Subtitle = styled(({ className, children }) => {
     return (
-        <H3 className={className}>
+        <h3 className={className}>
             {children}
-        </H3>
+        </h3>
     );
 })`
   color: ${FG_TEXT_MEDIUM};
   display: inline-flex;
+  margin-top: ${props => props.noMargin && '0'}
 `;
 
 Title.propTypes = {

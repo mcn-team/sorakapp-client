@@ -12,10 +12,9 @@ export const authenticate = async (data) => {
 
     try {
         const response = await simpleFetch(endpoint, options);
-        const token = response.result;
 
-        if (token) {
-            Authentication.setAuthentication(token);
+        if (response && response.token) {
+            Authentication.setAuthentication(response.token);
         }
 
         return response;
@@ -34,11 +33,15 @@ export const register = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = await simpleFetch(url, options);
+    try {
+        const response = await simpleFetch(url, options);
 
-    const token = response.result;
+        if (response && response.token) {
+            Authentication.setAuthentication(response.token);
+        }
 
-    if (token) {
-        Authentication.setAuthentication(token);
+        return response;
+    } catch (err) {
+        return Errors.manageErrno(err);
     }
 };

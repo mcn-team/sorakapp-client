@@ -17,3 +17,5 @@ export const BG_ELEVATED_08 = 'rgba(255, 255, 255, 0.12)';
 export const BG_ELEVATED_12 = 'rgba(255, 255, 255, 0.14)';
 export const BG_ELEVATED_16 = 'rgba(255, 255, 255, 0.15)';
 export const BG_ELEVATED_24 = 'rgba(255, 255, 255, 0.16)';
+
+export const DEFAULT_FONT = '\'Stalinist One\', cursive';
