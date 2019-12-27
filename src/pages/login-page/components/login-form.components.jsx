@@ -52,7 +52,7 @@ export const LoginForm = () => {
 
                             <div>
                                 <StyledButton
-                                    disabled={submitting}
+                                    disabled={true}
                                     type="submit"
                                 >
                                     <span>Submit</span>

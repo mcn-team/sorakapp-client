@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Error } from './input-error.component';
 
-import { TEXT_STYLE_HIGH_DEFAULT } from '../constants/styles';
+import { FG_TEXT_HIGH, FG_TEXT_MEDIUM, FG_ERROR_HIGH } from '../constants/styles';
 
 const StyledField = styled(Field)`
   flex: 1;
@@ -14,8 +14,7 @@ const StyledField = styled(Field)`
   border: none;
   border-bottom: 1px solid white;
   background-color: transparent;
-  ${TEXT_STYLE_HIGH_DEFAULT};
-  font-family: 'Stalinist One', cursive;
+  color: ${FG_TEXT_HIGH};
   border-radius: 3px;
 `;
 
@@ -24,11 +23,14 @@ const StyledInput = styled.input`
   padding: 3px 5px;
   font-size: 1em;
   border: none;
-  border-bottom: 1px solid ${props => props.error ? 'red' : 'white'};
+  border-bottom: 1px solid ${props => props.error ? FG_ERROR_HIGH : FG_TEXT_HIGH};
   background-color: transparent;
-  ${TEXT_STYLE_HIGH_DEFAULT};
-  font-family: 'Stalinist One', cursive;
+  color: ${FG_TEXT_HIGH};
   border-radius: 3px;
+  width: 100%;
+  ::placeholder {
+    color: ${FG_TEXT_MEDIUM};
+  }
 `;
 
 const composeValidators = (...validators) => {

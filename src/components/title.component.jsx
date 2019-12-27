@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { TEXT_STYLE_HIGH_DEFAULT } from '../constants/styles.js';
+import { FG_TEXT_HIGH } from '../constants/styles.js';
 
 export const Title = styled((props) => {
     return (
@@ -11,7 +11,7 @@ export const Title = styled((props) => {
         </h1>
     );
 })`
-  ${TEXT_STYLE_HIGH_DEFAULT};
+  color: ${FG_TEXT_HIGH};
   display: inline-flex;
   ${(props) => props.withSubtitle && { marginBottom: 0 }}
 `;

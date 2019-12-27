@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Title } from './title.component';
 import { Subtitle } from './subtitle.component';
 
-import { ELEVATED_01 } from '../constants/styles';
+import { BG_ELEVATED_01, FG_PRIMARY_MEDIUM } from '../constants/styles';
 
 const LinkSection = styled.section`
     display: flex;
@@ -29,7 +29,8 @@ const HeaderComponent = (props) => {
 };
 
 export const Header = styled(HeaderComponent)`
-  ${ELEVATED_01};
+  background-color: ${BG_ELEVATED_01};
+  border-bottom: 1px solid ${FG_PRIMARY_MEDIUM};
   min-height: 100px;
   display: flex;
   flex-direction: column;

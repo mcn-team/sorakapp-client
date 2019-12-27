@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { ELEVATED_04, TEXT_STYLE_HIGH_PRIMARY } from '../constants/styles';
+import {
+    BG_ELEVATED_01,
+    BG_ELEVATED_06,
+    FG_PRIMARY_MEDIUM,
+    FG_PRIMARY_HIGH,
+    FG_TEXT_MEDIUM
+} from '../constants/styles';
 
 export const Button = styled.button`
   margin-top: 20px;
@@ -8,17 +14,14 @@ export const Button = styled.button`
   padding: 15px;
   border-radius: 2px;
   font-family: 'Stalinist One', cursive;
-  ${ELEVATED_04};
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  ${TEXT_STYLE_HIGH_PRIMARY};
+  background-color: ${props => props.disabled ? BG_ELEVATED_01 : BG_ELEVATED_06};
+  border: 1px solid ${props => props.disabled ? FG_TEXT_MEDIUM : FG_PRIMARY_MEDIUM};
+  color: ${props => props.disabled ? FG_TEXT_MEDIUM : FG_PRIMARY_HIGH};
   -ms-transform: skewX(-20deg);
   -webkit-transform: skewX(-20deg);
   transform: skewX(-20deg);
-  
-  :disabled {
-    background-color: red;
-  }
-  
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+
   & > span {
     -ms-transform: skewX(20deg);
     -webkit-transform: skewX(20deg);
