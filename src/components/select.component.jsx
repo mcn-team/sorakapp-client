@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Error } from './input-error.component';
 import { Field } from 'react-final-form';
-import { FG_ERROR_HIGH, FG_TEXT_HIGH, FG_TEXT_MEDIUM, DEFAULT_FONT } from '../constants/styles';
+import { FG_ERROR_HIGH, FG_TEXT_HIGH, FG_TEXT_MEDIUM, TITLE_FONT } from '../constants/styles';
 
 const StyledField = styled(Field)`
   flex: 1;
@@ -42,7 +42,7 @@ export const Select = styled(({ validate, children, label, placeholder, name, cl
     const validations = Array.isArray(validate) ? composeValidators(...validate) : composeValidators(validate);
     const DefaultOption = styled.option`
       color: ${FG_TEXT_MEDIUM};
-      font-family: ${DEFAULT_FONT};
+      font-family: ${TITLE_FONT};
     `;
 
     return (
@@ -53,7 +53,7 @@ export const Select = styled(({ validate, children, label, placeholder, name, cl
                     return (
                         <div>
                             <StyledSelect
-                                style={{ fontFamily: DEFAULT_FONT }}
+                                style={{ fontFamily: TITLE_FONT }}
                                 error={meta.error && meta.touched}
                                 {...input}
                                 placeholder={placeholder}

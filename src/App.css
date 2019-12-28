@@ -3,21 +3,41 @@
   src: local('Stalinist One'), url(./assets/fonts/StalinistOne-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Hemi Head';
+  src: local('Hemi Head'), url(./assets/fonts/hemi-head.ttf) format('truetype');
+}
+
 body {
   letter-spacing: 1px;
   background-color: #121212;
-  font-family: 'Stalinist One', cursive;
+  font-size: 15px;
+  font-family: 'Hemi Head', cursive;
   color: rgba(255, 255, 255, 0.87);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+}
+
 .App-header {
-  background-color: #282c34;
+  min-height: 110px;
+  height: 15%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  padding: 0 50px;
+  justify-content: space-between;
+}
+
+.App-content {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 85%;
 }
 
 .App-link {
@@ -44,8 +64,15 @@ select:-webkit-autofill:active {
 
 input:focus,
 select:focus,
-textarea:focus {
+textarea:focus,
+a:focus,
+button:focus {
   outline-width: 0;
+}
+
+a:active,
+a:visited {
+  color: initial;
 }
 
 input::placeholder {

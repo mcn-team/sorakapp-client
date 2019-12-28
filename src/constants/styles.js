@@ -1,8 +1,12 @@
 export const FG_TEXT_HIGH = 'rgba(255, 255, 255, 0.87)';
 export const FG_TEXT_MEDIUM = 'rgba(255, 255, 255, 0.6)';
 
-export const FG_PRIMARY_HIGH = 'rgba(93, 193, 238, 0.87)';
+export const FG_PRIMARY_HIGH = 'rgba(93, 193, 238,0.87)';
 export const FG_PRIMARY_MEDIUM = 'rgba(93, 193, 238, 0.6)';
+
+//TODO: Choose a secondary color
+export const FG_SECONDARY_HIGH = 'rgba(93, 193, 238, 0.87)';
+export const FG_SECONDARY_MEDIUM = 'rgba(93, 193, 238, 0.6)';
 
 export const FG_ERROR_HIGH = 'rgba(255, 0, 0, 0.87)';
 export const FG_ERROR_MEDIUM = 'rgba(255, 0, 0, 0.6)';
@@ -18,4 +22,5 @@ export const BG_ELEVATED_12 = 'rgba(255, 255, 255, 0.14)';
 export const BG_ELEVATED_16 = 'rgba(255, 255, 255, 0.15)';
 export const BG_ELEVATED_24 = 'rgba(255, 255, 255, 0.16)';
 
-export const DEFAULT_FONT = '\'Stalinist One\', cursive';
+export const TITLE_FONT = '\'Stalinist One\', cursive';
+export const DEFAULT_FONT = '\'Hemi Head\', cursive';

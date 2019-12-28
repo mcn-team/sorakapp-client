@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Form } from 'react-final-form';
 import styled from 'styled-components';
 
 import { Input, Button, Error } from '../../../components';
 import { authenticate } from '../../../services/authentication.services';
-import { Authentication, Validation } from '../../../utils';
+import { Validation } from '../../../utils';
 
 const PASSWORD_MIN_LENGTH = 8;
 const StyledButton = styled(Button)`
@@ -15,9 +16,12 @@ const StyledButton = styled(Button)`
 const StyledForm = styled.form`
   width: min-content
 `;
+const ButtonContainer = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
 
-export const LoginForm = () => {
-    const [ redirect, setRedirect ] = useState(false);
+export const LoginForm = (props) => {
     const [ error, setError ] = useState(null);
     const onSubmit = async (values) => {
         const response = await authenticate(values);
@@ -26,13 +30,9 @@ export const LoginForm = () => {
             setError(response.error);
             console.error(response.error);
         } else {
-            setRedirect(Authentication.isAuthenticated());
+            props.onLogin();
         }
     };
-
-    if (redirect) {
-        return <Redirect to="/" />;
-    }
 
     return (
         <Form
@@ -53,26 +53,31 @@ export const LoginForm = () => {
                             validate={[ Validation.isRequired, Validation.isMinimumLength(PASSWORD_MIN_LENGTH) ]}
                         />
 
-                        <div>
+                        <ButtonContainer>
                             <StyledButton
                                 disabled={submitting}
                                 type="submit"
                             >
-                                <span>Submit</span>
+                                <span>Connexion</span>
                             </StyledButton>
                             <Link to="/register">
                                 <StyledButton
+                                    secondary
                                     type="button"
                                     disabled={submitting}
                                 >
-                                    <span>Register</span>
+                                    <span>Créer un compte</span>
                                 </StyledButton>
                             </Link>
-                        </div>
+                        </ButtonContainer>
                         <Error centered>{error || ''}</Error>
                     </StyledForm>
                 );
             }}
         />
     );
+};
+
+LoginForm.propTypes = {
+    onLogin: PropTypes.func.isRequired
 };
