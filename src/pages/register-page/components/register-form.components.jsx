@@ -75,7 +75,7 @@ export const RegisterForm = () => {
                             >
                                 <span>Register</span>
                             </StyledButton>
-                            <Link to="/register">
+                            <Link to="/login">
                                 <StyledButton
                                     type="button"
                                     disabled={submitting}

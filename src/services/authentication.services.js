@@ -4,9 +4,6 @@ export const authenticate = async (data) => {
     const endpoint = '/login';
     const options = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(data)
     };
 
@@ -27,9 +24,6 @@ export const register = async (data) => {
     const url = '/register';
     const options = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(data)
     };
 

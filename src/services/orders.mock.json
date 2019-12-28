@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 1,
+    "client": 4,
+    "clientName": "Yoko",
+    "product": 13,
+    "productName": "Interceptor",
+    "productionOwner": null,
+    "productionOwnerName": null,
+    "deliveryOwner": null,
+    "deliveryOwnerName": null,
+    "createdAt": "2019-12-19T18:50:34.989Z"
+  },
+  {
+    "_id": 2,
+    "client": 6,
+    "clientName": "Lucy",
+    "product": 18,
+    "productName": "Cruiser",
+    "productionOwner": null,
+    "productionOwnerName": null,
+    "deliveryOwner": null,
+    "deliveryOwnerName": null,
+    "createdAt": "2019-12-25T18:51:07.372Z"
+  },
+  {
+    "_id": 3,
+    "client": 4,
+    "clientName": "Yoko",
+    "product": 28,
+    "productName": "Carrier",
+    "productionOwner": null,
+    "productionOwnerName": null,
+    "deliveryOwner": null,
+    "deliveryOwnerName": null,
+    "createdAt": "2019-12-28T18:51:12.405Z"
+  }
+]

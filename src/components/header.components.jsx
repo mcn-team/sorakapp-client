@@ -1,39 +1,66 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { Title } from './title.component';
-import { Subtitle } from './subtitle.component';
+import { Title, Button } from './';
 
+import { Authentication } from '../utils/authentication.utils';
 import { BG_ELEVATED_01, FG_PRIMARY_MEDIUM } from '../constants/styles';
 
-const LinkSection = styled.section`
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px 0;
+const ControlSection = styled.section`
+  display: flex;
+  flex-direction: row;
+  width: min-content;
+  height: min-content;
+  flex: 1;
+  justify-content: flex-end;
+
+  & > button {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
 `;
 
-const HeaderComponent = (props) => {
-    return (
-        <header className={props.className}>
-            <Title withSubtitle>OneOverNyne</Title>
-            <Subtitle noMargin subtitle="">Chimaera Tool</Subtitle>
-            <LinkSection>
-                {React.Children.map(props.children, (child, index) => {
-                    return (
-                        <div key={`hd-lk-${index}`}>{child}</div>
-                    );
-                })}
-            </LinkSection>
-        </header>
-    );
-};
-
-export const Header = styled(HeaderComponent)`
-  background-color: ${BG_ELEVATED_01};
-  border-bottom: 1px solid ${FG_PRIMARY_MEDIUM};
-  min-height: 100px;
+const TitleSection = styled.section`
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
+  width: min-content;
   cursor: pointer;
+  flex: 1;
+  font-size: 1.3rem;
+`;
+
+const HeaderLink = styled(Link)`
+  flex-direction: column;
+  display: inline-flex;
+  width: fit-content;
+`;
+
+export const Header = styled((props) => {
+    const onLogout = () => {
+        Authentication.removeAuthentication();
+        props.onLogout();
+    };
+
+    return (
+        <header className={props.className}>
+            <TitleSection>
+                <HeaderLink to="/">
+                    <Title subtitle="Chimaera Tool">OneOverNyne</Title>
+                </HeaderLink>
+            </TitleSection>
+            {
+                Authentication.isAuthenticated() && (
+                    <ControlSection>
+                        <Button onClick={onLogout}>
+                            Déconnexion
+                        </Button>
+                    </ControlSection>
+                )
+            }
+        </header>
+    );
+})`
+  background-color: ${BG_ELEVATED_01};
+  border-bottom: 1px solid ${FG_PRIMARY_MEDIUM};
 `;

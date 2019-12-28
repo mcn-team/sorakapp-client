@@ -7,3 +7,4 @@ export { Button } from './button.component';
 export { Error } from './input-error.component';
 export { CenteringContainer } from './centering-container.component';
 export { Select } from './select.component';
+export { DataGrid } from './data-grid';

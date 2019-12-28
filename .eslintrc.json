@@ -51,6 +51,7 @@
       "error",
       "always"
     ],
+    "react/prop-types": 2,
     "react/jsx-tag-spacing": ["error", {
       "closingSlash": "never",
       "beforeSelfClosing": "always",
