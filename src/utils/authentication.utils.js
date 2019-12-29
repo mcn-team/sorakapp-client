@@ -1,6 +1,7 @@
 import { LocalStorage, SessionStorage } from './storages.utils';
 
 const TOKEN_KEY = 'auth_token';
+const USER_KEY = 'user';
 const KEEP_LOGIN_KEY = 'keep-login';
 
 export class Authentication {
@@ -23,6 +24,12 @@ export class Authentication {
     }
 
     static getToken() {
-        return LocalStorage.getItem(TOKEN_KEY) || SessionStorage.getItem(TOKEN_KEY);
+        return SessionStorage.getItem(TOKEN_KEY) || LocalStorage.getItem(TOKEN_KEY);
+    }
+
+    static getRole() {
+        const user = SessionStorage.getItem(USER_KEY) || LocalStorage.getItem(USER_KEY);
+
+        return user && user.role;
     }
 }

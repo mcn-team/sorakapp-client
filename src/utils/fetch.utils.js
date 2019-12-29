@@ -5,9 +5,17 @@ import { CONFIG } from '../config';
 const { API_PREFIX, API_PORT, API_BASE_URL } = CONFIG;
 
 export const simpleFetch = (endpoint, options = {}) => {
+    const newOptions = {
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    };
+
     return new Promise(async (resolve, reject) => {
         const url = `${API_BASE_URL}:${API_PORT}${API_PREFIX}${endpoint}`;
-        const response = await fetch(url, options);
+        const response = await fetch(url, newOptions);
 
         if (response.status === HTTP_UNAUTHORIZED) {
             Authentication.removeAuthentication();
@@ -29,4 +37,16 @@ export const simpleFetch = (endpoint, options = {}) => {
                 return resolve(await response.json());
         }
     });
+};
+
+export const fetchWithAuth = async (endpoint, options = {}) => {
+    const optionWithAuth = {
+        ...options,
+        headers: {
+            ...options.headers,
+            'Authorization': Authentication.getToken()
+        }
+    };
+
+    return simpleFetch(endpoint, optionWithAuth);
 };

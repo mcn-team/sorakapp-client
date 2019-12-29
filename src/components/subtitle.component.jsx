@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Title } from './title.component';
-
-import { FG_TEXT_MEDIUM } from '../constants/styles.js';
+import { FG_TEXT_MEDIUM, TITLE_FONT } from '../constants/styles.js';
 
 export const Subtitle = styled(({ className, children }) => {
     return (
@@ -15,10 +13,11 @@ export const Subtitle = styled(({ className, children }) => {
 })`
   color: ${FG_TEXT_MEDIUM};
   display: inline-flex;
-  margin-top: ${props => props.noMargin && '0'}
+  font-family: ${TITLE_FONT};
+
 `;
 
-Title.propTypes = {
+Subtitle.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
     noMargin: PropTypes.bool

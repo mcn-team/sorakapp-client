@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Error } from './input-error.component';
 
-import { FG_TEXT_HIGH, FG_TEXT_MEDIUM, FG_ERROR_HIGH, DEFAULT_FONT } from '../constants/styles';
+import { FG_TEXT_HIGH, FG_TEXT_MEDIUM, FG_ERROR_HIGH, TITLE_FONT } from '../constants/styles';
 
 const StyledField = styled(Field)`
   flex: 1;
@@ -29,7 +29,7 @@ const StyledInput = styled.input`
   color: ${FG_TEXT_HIGH};
   border-radius: 3px;
   width: ${FILL_AVAILABLE};
-  font-family: ${DEFAULT_FONT};
+  font-family: ${TITLE_FONT};
   ::placeholder {
     color: ${FG_TEXT_MEDIUM};
   }
